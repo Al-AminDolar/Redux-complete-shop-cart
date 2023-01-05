@@ -81,7 +81,7 @@ const NabBar = () => {
               <Badge
                 className=" absolute pr-10"
                 size="small"
-                count={cart.cart.length}
+                count={cart.cart.reduce((a, c) => a + c.quantity, 0)}
               ></Badge>
             </span>
           </Link>
