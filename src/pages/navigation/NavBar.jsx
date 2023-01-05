@@ -9,10 +9,12 @@ import { Avatar, Badge, Button, Dropdown, Space } from "antd";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { selectcart } from "../../redux/slice/cartSlice";
+
 import { logout, selectUser } from "../../redux/slice/userSlice";
 
 const NabBar = () => {
+  const cart = useSelector((state) => state.cart);
+  // console.log();
   const dispatch = useDispatch();
   const handleSubmit = () => {
     dispatch(
@@ -76,7 +78,11 @@ const NabBar = () => {
               style={{ color: "green", fontSize: "40px" }}
             >
               <ShoppingCartOutlined className="relative" />
-              <Badge className=" absolute pr-10" size="small" count={1}></Badge>
+              <Badge
+                className=" absolute pr-10"
+                size="small"
+                count={cart.cart.length}
+              ></Badge>
             </span>
           </Link>
         </div>
@@ -120,7 +126,7 @@ const NabBar = () => {
             </Dropdown>
           ) : (
             <Button>
-              <Link to="/login">Login</Link>
+              <Link to="/">Login</Link>
             </Button>
           )}
         </ul>
