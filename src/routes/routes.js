@@ -1,11 +1,10 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import Login from "../Auth/Login";
+import Protected from "../Auth/Protected";
 import About from "../pages/Home/About";
 import Cart from "../pages/Home/Cart";
-import Home from "../pages/Home/Home";
 import Product from "../pages/Home/Product";
 import Main from "../pages/Main/Main";
-import NabBar from "../pages/navigation/NavBar";
 
 const router = createBrowserRouter([
   {
@@ -15,27 +14,20 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: <Protected Component={Product} />,
       },
-      {
-        path: "/home",
-        element: <Home />,
-      },
+
       {
         path: "/cart",
-        element: <Cart />,
+        element: <Protected Component={Cart} />,
       },
       {
         path: "/product",
-        element: <Product />,
+        element: <Protected Component={Product} />,
       },
       {
         path: "/about",
         element: <About />,
-      },
-      {
-        path: "/login",
-        element: <Login />,
       },
     ],
   },
