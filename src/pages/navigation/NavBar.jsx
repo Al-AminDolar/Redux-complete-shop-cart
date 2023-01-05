@@ -9,6 +9,7 @@ import { Avatar, Badge, Button, Dropdown, Space } from "antd";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { selectcart } from "../../redux/slice/cartSlice";
 import { logout, selectUser } from "../../redux/slice/userSlice";
 
 const NabBar = () => {
@@ -21,6 +22,7 @@ const NabBar = () => {
     );
   };
   const user = useSelector(selectUser);
+
   const items = [
     {
       label: (
