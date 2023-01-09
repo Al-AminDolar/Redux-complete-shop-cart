@@ -31,15 +31,11 @@ const cartSlice = createSlice({
 
     removeFromCart: (state, action) => {
       if (action.payload.quantity > 1) {
-        const product = {
-          ...action.payload,
-          quantity: action.payload.quantity - 1,
-        };
-
-        state.cart = state.cart.filter(
-          (product) => product._id !== action.payload._id
-        );
-        state.cart.push(product);
+        state.cart.map((cartItem) => {
+          if (cartItem._id === action.payload._id) {
+            cartItem.quantity -= 1;
+          }
+        });
       } else {
         state.cart = state.cart.filter(
           (product) => product._id !== action.payload._id
